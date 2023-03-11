@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 
-	st "stor/storage"
+	"github.com/514K/GolangLearn/storage"
 )
 
 // "storage"
 
 func main() {
-	sotr := *new(st.Sotrudnik)
-	ms := st.NewMemoryStorage()
+	sotr := *new(storage.Sotrudnik)
+	ms := storage.NewMemoryStorage()
 	fmt.Printf("%v\n%v\n", sotr, ms)
 	// ms.insert()
 }
