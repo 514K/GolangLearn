@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"storage"
+	"github.com/514K/GolangLearn/storage"
 )
 
 // "storage"
