@@ -8,33 +8,33 @@ type Sotrudnik struct {
 	yearsOld   int
 }
 
-type storage interface {
-	insert(e Sotrudnik) error
-	get(id int) (Sotrudnik, error)
-	delete(id int) error
+type Storage interface {
+	Insert(e Sotrudnik) error
+	Get(id int) (Sotrudnik, error)
+	Delete(id int) error
 }
 
-type memoryStorage struct {
+type MemoryStorage struct {
 	data map[int]Sotrudnik
 }
 
-func NewMemoryStorage() *memoryStorage {
-	return &memoryStorage{
+func NewMemoryStorage() *MemoryStorage {
+	return &MemoryStorage{
 		data: make(map[int]Sotrudnik),
 	}
 }
 
-func (m *memoryStorage) insert(s Sotrudnik) error {
+func (m *MemoryStorage) Insert(s Sotrudnik) error {
 	m.data[s.id] = s
 
 	return nil
 }
 
-func (m *memoryStorage) get(id int) (Sotrudnik, error) {
+func (m *MemoryStorage) Get(id int) (Sotrudnik, error) {
 	return m.data[id], nil
 }
 
-func (m *memoryStorage) delete(id int) error {
+func (m *MemoryStorage) Delete(id int) error {
 	delete(m.data, id)
 	return nil
 }
