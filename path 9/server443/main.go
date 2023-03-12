@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
-
-	"golang.org/x/crypto/acme/autocert"
+	// "golang.org/x/crypto/acme/autocert"
 )
 
 func main() {
@@ -14,5 +12,5 @@ func main() {
 		fmt.Fprintf(w, "Hello, TLS user! Your config: %+v", r.TLS)
 	})
 
-	log.Fatal(http.Serve(autocert.NewListener("mydomainname.com"), mux))
+	// log.Fatal(http.Serve(autocert.NewListener("mydomainname.com"), mux))
 }
