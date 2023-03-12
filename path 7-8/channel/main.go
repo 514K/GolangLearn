@@ -7,22 +7,30 @@ import (
 
 func main() {
 	t := time.Now()
+
 	fmt.Printf("%v\n", t.Format(time.RFC3339))
 
-	go calcSome(3000)
+	result1 := make(chan int)
+	result2 := make(chan int)
 
-	go calcSome(1000)
+	go calcSome(2000, result1)
 
-	go load()
+	go calcSome(1000, result2)
 
-	time.Sleep(time.Second * 50)
+	fmt.Printf("%v\n", <-result1)
+	fmt.Printf("%v\n", <-result2)
 
 	fmt.Printf("End in: %v\n", time.Since(t))
 
+	// ch := make(chan int)
+	// ch <- 1
+	// num := <-ch
+	// fmt.Printf("%v\n", num)
 }
 
-func calcSome(n int) {
+func calcSome(n int, res chan int) {
 	t := time.Now()
+
 	result := 0
 	for i := 0; i <= n; i++ {
 		result++
@@ -30,13 +38,5 @@ func calcSome(n int) {
 	}
 
 	fmt.Printf("Res: %v; Need time: %v\n", result, time.Since(t))
-}
-
-func load() {
-	for {
-		for _, r := range `-\|/` {
-			fmt.Printf("\r%c", r)
-			time.Sleep(time.Millisecond * 100)
-		}
-	}
+	res <- result
 }
