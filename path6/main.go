@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/514K/GolangLearn/path6/storage"
-	"github.com/514K/GolangLearn/path6/test"
+	"github.com/514K/GolangLearn/storage"
+	"github.com/514K/GolangLearn/test"
 )
 
 func main() {
